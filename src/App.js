@@ -4,7 +4,6 @@ function App() {
   return (
     <div className="App">
       <h1>Hii, elRed</h1>
-      <h1>Testing vercel</h1>
     </div>
   );
 }
