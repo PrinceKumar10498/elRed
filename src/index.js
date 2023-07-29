@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 import "./index.css";
-import Home from './components/home';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -15,10 +14,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
-  {
-    path: "/testUrl",
-    element: <Home />,
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

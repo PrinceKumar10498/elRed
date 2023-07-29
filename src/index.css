@@ -11,3 +11,266 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page-container {
+  height: 100%;
+  width: 100%;
+  max-width: 360px;
+  float: none;
+  margin: 0 auto !important;
+  clear: both;
+}
+
+.flexing-about-me {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.empty-about-me {
+  text-align: center;
+  margin: 0;
+  color: grey;
+}
+
+.edit-icon-about-me {
+  cursor: pointer;
+}
+
+.text-are-about-add {
+  width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.textLimit {
+  margin: 0;
+  float: right;
+}
+
+.resume-iupload {
+  margin-top: 40px;
+}
+
+.bloodGroup-text {
+  margin-top: 20px;
+}
+
+.save-button_bio-form {
+  margin-top: 50px;
+}
+
+.actual-inner-save-button {
+  width: 100%;
+}
+
+.card-flexing {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.resume-card {
+  margin-bottom: 30px;
+}
+
+.skills-p {
+  margin: 0
+}
+
+.spacing-skills {
+  padding: 0px 16px 16px;
+  border-bottom: 1px solid grey;
+}
+
+.resume-heading {
+  margin: 0;
+}
+
+.input-resume {
+  visibility: hidden;
+}
+
+.upload-resume-button {
+  width: 100%;
+  flex-direction: column;
+  padding: 20px 0px !important;
+  border: 1px solid grey !important;
+}
+
+.skills-save-button-parent {
+  margin-top: 50px;
+}
+
+.skills-save-button {
+  width: 100%;
+}
+
+.flexing-chip {
+  display: flex;
+  gap: 5px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.flexing-chip::-webkit-scrollbar {
+  display: none;
+}
+
+.empty-skills {
+  text-align: center;
+  color: grey;
+}
+
+.ratings-parent-heading {
+  color: white;
+  margin-bottom: 20px !important;
+  font-size: 20px !important;
+}
+
+.ethical-count {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+  padding-bottom: 15px;
+  color: white;
+}
+
+.virtual-count {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  padding-bottom: 15px;
+  color: white;
+  padding-top: 15px;
+}
+
+.ethical-real-count {
+  margin: 0;
+}
+
+.ethical-real-text {
+  margin: 0;
+}
+
+.modal-ethical-popup {
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 300px;
+}
+
+.modal-ethical-popup::-webkit-scrollbar {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.ul-list-ethical {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.popup-ethical-inner {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.popup-ethical-inner-p1 {
+  margin: 0;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 6%;
+}
+
+.popup-ethical-inner-p2 {
+  margin: 0;
+  color: grey;
+  margin-top: 10px;
+  width: 88%;
+}
+
+.popup-ethical-inner-cancel-icon {
+  margin-top: 10px;
+  cursor: pointer;
+  width: 6%
+}
+
+.flexing-list-ethical-parent {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0px;
+  border-bottom: 1px solid grey;
+}
+
+.dp-url-list {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.first-last-name {
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.title-job {
+  margin: 0;
+  color: grey;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.upload-info-flexing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleted-icon {
+  cursor: pointer;
+}
+
+.resume-name {
+  margin: 0;
+}
+
+.delete-dialog {
+  padding: 20px;
+}
+
+.delete-icon-middle {
+  padding: 20px 0px 0px !important;
+  text-align: center;
+}
+
+.delete-icon-middle-p{
+  text-align: center;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  max-width: 300px !important;
+}
+
+.dialog-actions-buttons {
+  margin-bottom: 10px !important;
+  justify-content: center !important;
+}
+
+.dialog-cancel-button {
+  border: 1px solid black !important;
+  border-radius: 50px !important;
+  padding: 5px 20px !important;
+  color: black !important;
+}
+
+.dialog-delete-button {
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 5px 20px !important;
+  color: white !important;
+  background: brown !important;
+}
