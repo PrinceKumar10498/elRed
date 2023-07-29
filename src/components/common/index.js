@@ -7,6 +7,7 @@ import Chip from '@mui/material/Chip';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Box from '@mui/material/Box';
 
+// styles for chips
 function getStyles(name, personName) {
     return {
         fontWeight:
@@ -16,6 +17,7 @@ function getStyles(name, personName) {
     };
 }
 
+//generic component for Chips select
 export const ChipSelect = ({ label, value, handleChange, menuItemData, handleDeleteChip }) => {
 
     const ITEM_HEIGHT = 48;
@@ -48,17 +50,17 @@ export const ChipSelect = ({ label, value, handleChange, menuItemData, handleDel
                 renderValue={(selected) => (
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                         {selected.map((value) => (
-                            <Chip 
+                            <Chip
                                 key={value}
                                 label={value}
                                 color="primary"
                                 clickable
                                 deleteIcon={
                                     <CancelIcon
-                                      onMouseDown={(event) => event.stopPropagation()}
+                                        onMouseDown={(event) => event.stopPropagation()}
                                     />
-                                  }
-                                onDelete={(event) => handleDelte(event, selected, value)}/>
+                                }
+                                onDelete={(event) => handleDelte(event, selected, value)} />
                         ))}
                     </Box>
                 )}

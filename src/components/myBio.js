@@ -5,7 +5,6 @@ import Modal from '@mui/material/Modal';
 import CardContent from '@mui/material/CardContent';
 import EditIcon from '@mui/icons-material/Edit';
 import CancelIcon from '@mui/icons-material/Cancel';
-// import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
@@ -13,6 +12,7 @@ import EditBio from './formScreen/editBio';
 import { Chip } from '@mui/material';
 import Skills from './formScreen/skills';
 
+//styling modal for ethical coc and real life meet
 const style = {
     position: 'absolute',
     top: '50%',
@@ -27,6 +27,7 @@ const style = {
     p: 2
 };
 
+//styling modal for resume preview
 const style2 = {
     position: 'absolute',
     top: '50%',
@@ -55,6 +56,24 @@ const MyBio = () => {
     const [open, setOpen] = React.useState(false);
     const [openModal, setOpenModal] = React.useState(false);
 
+    // fetching data from ethical coc and virtuality meet
+    useEffect(() => {
+        fetch("https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsEthicalCodeResponse.json").then((res) => {
+            return res.json().then((data) => {
+                if (data.success) {
+                    setEthicalCodeCountAPI(data);
+                }
+            });
+        })
+        fetch("https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsVirtuallyMetResponse.json").then((res) => {
+            return res.json().then((data) => {
+                if (data.success) {
+                    setVirtuallyMetCountAPI(data);
+                }
+            });
+        })
+    }, [])
+
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
@@ -76,30 +95,21 @@ const MyBio = () => {
         setEditSkillsScreen(true);
     }
 
-    useEffect(() => {
-        fetch("https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsEthicalCodeResponse.json").then((res) => {
-            return res.json().then((data) => {
-                if (data.success) {
-                    setEthicalCodeCountAPI(data);
-                }
-            });
-        })
-        fetch("https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/RatingsVirtuallyMetResponse.json").then((res) => {
-            return res.json().then((data) => {
-                if (data.success) {
-                    setVirtuallyMetCountAPI(data);
-                }
-            });
-        })
-    }, [])
-
-    const valueDataHandler = (aboutMe, bloodGroup, isFileUploaded) => {
+    // getting data from its child to below method
+    const valueDataHandler = (aboutMe, bloodGroup, isFileUploaded, resume) => {
         set_AboutMeRender(aboutMe);
         set_BloodGroupRender(bloodGroup);
-        setMyResume(isFileUploaded);
+        setMyResume(resume);
+        // let reader = new FileReader();
+        // reader.readAsDataURL(resume);
+        // reader.onloadend = (e) =>{
+        //     setMyResume(e.target.result);
+        // }
+        // setMyResume(isFileUploaded);
         setEditBioScreen(false);
     }
 
+    // skills data renderer
     const skillsValueHandle = (selectedskills, selectedHobbies, selectedSubjects) => {
         setSelectedskillsRender(selectedskills);
         setSelectedHobbiesRender(selectedHobbies);
@@ -113,8 +123,11 @@ const MyBio = () => {
 
     return (
         <div>
-            <h4>My Bio</h4>
+            {/* heading handler */}
+            {editSkillsScreen ? <h4>Skills</h4> : <h4>My Bio</h4>}
+            {/* Screen handling using states */}
             {!editBioScreen && !editSkillsScreen ? <div>
+                {/* about me section */}
                 <div className="flexing-about-me">
                     <p>About Me</p>
                     <span className="edit-icon-about-me"><EditIcon onClick={() => EsitScreenTEst()} /></span>
@@ -126,10 +139,12 @@ const MyBio = () => {
                         </CardContent>
                     </Card>
                 </div>
+                {/* blood group section */}
                 <div className="flexing-about-me">
                     <p>Blood Group</p>
                     {bloodGroupRender ? <p>{bloodGroupRender}</p> : <></>}
                 </div>
+                {/* resume section */}
                 <div className="resume-card">
                     <Card sx={{ minWidth: 275 }}>
                         <CardContent className="card-flexing" onClick={() => handleOpenModal()}>
@@ -138,6 +153,7 @@ const MyBio = () => {
                         </CardContent>
                     </Card>
                 </div>
+                {/* skills section */}
                 <div className="resume-card">
                     <Card sx={{ minWidth: 275 }}>
                         <CardContent className="card-flexing">
@@ -194,6 +210,7 @@ const MyBio = () => {
                         }
                     </Card>
                 </div>
+                {/* ratings section */}
                 <div>
                     {
                         ethicalCodeCountAPI && virtuallyMetCountAPI &&
@@ -207,6 +224,7 @@ const MyBio = () => {
                     }
                 </div>
             </div> : editSkillsScreen && !editBioScreen ? <div><Skills skillsValueHandle={skillsValueHandle} /></div> : <div><EditBio valueDataHandler={valueDataHandler} /></div>}
+            {/* modal for ethical coco and virtuality meet */}
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -247,6 +265,7 @@ const MyBio = () => {
                     </ul>
                 </Box>
             </Modal>
+            {/* modal for resume preview */}
             {
                 <Modal
                     open={openModal}
@@ -255,9 +274,8 @@ const MyBio = () => {
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style2}>
-                    {/* {myResume && <Document file={myResume}>
-                        <Page pageNumber={1} />
-                    </Document>} */}
+                        {/* {myResume && <p>Show preview of Resume PDF here !!!! </p>} */}
+                        <p>Show preview of Resume PDF here !!!! </p>
                     </Box>
                 </Modal>
             }

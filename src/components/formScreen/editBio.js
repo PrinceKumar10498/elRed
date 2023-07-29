@@ -24,9 +24,10 @@ const EditBio = ({ valueDataHandler }) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [isFileUploaded, setIsFileUploaded] = useState(false);
     const [exceedinglimit, setExceedingLimit] = useState(false);
-    const [resumePreview, setResumePreview] = useState(false);
+    // const [resumePreview, setResumePreview] = useState(false);
     const [open, setOpen] = React.useState(false);
 
+    // deleted resume confirm modal transition
     const Transition = React.forwardRef(function Transition(props, ref) {
         return <Slide direction="up" ref={ref} {...props} />;
     });
@@ -39,12 +40,12 @@ const EditBio = ({ valueDataHandler }) => {
         setOpen(false);
     };
 
-    const options = {
-        density: 100,
-        format: "png",
-        width: 600,
-        height: 600
-    };
+    // const options = {
+    //     density: 100,
+    //     format: "png",
+    //     width: 600,
+    //     height: 600
+    // };
 
     const onChangeTextAreaAbout = (event) => {
         if (event.target.value) {
@@ -131,10 +132,12 @@ const EditBio = ({ valueDataHandler }) => {
 
     return (
         <div>
+            {/* about me text area */}
             <h4>Write something about yourself?</h4>
             <textarea className="text-are-about-add" rows="5" placeholder="Write something here..." value={aboutMe} onChange={(event) => { onChangeTextAreaAbout(event) }}></textarea>
             <p className="textLimit">{characterCount}/500</p>
             {aboutMeError && <span style={{ color: "red" }}>About Me mendatory</span>}
+            {/* resume upload button */}
             <div className="resume-iupload">
                 {
                     !isFileUploaded ?
@@ -161,6 +164,7 @@ const EditBio = ({ valueDataHandler }) => {
             </div>
             {resumeError && <span style={{ color: "red" }}>Please Upload Resume</span>}
             {exceedinglimit && <span style={{ color: "red" }}>Please upload less than 5MB file size having .pdf extension only</span>}
+            {/* blood group selection */}
             <div>
                 <p className="bloodGroup-text">Blood Group</p>
                 <FormControl fullWidth>
@@ -179,8 +183,9 @@ const EditBio = ({ valueDataHandler }) => {
             </div>
             {bloodGroupError && <span style={{ color: "red" }}>Please Select Blood Group</span>}
             <div className="save-button_bio-form">
-                <Button disabled={validateForm() ? false : true} className="actual-inner-save-button" variant="contained" color="error" onClick={() => valueDataHandler(aboutMe, bloodGroup, isFileUploaded)}>Save</Button>
+                <Button disabled={validateForm() ? false : true} className="actual-inner-save-button" variant="contained" color="error" onClick={() => valueDataHandler(aboutMe, bloodGroup, isFileUploaded, resume)}>Save</Button>
             </div>
+            {/* deleted resume confirm dialog */}
             {open && <Dialog
                 open={open}
                 TransitionComponent={Transition}

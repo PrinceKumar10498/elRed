@@ -11,6 +11,7 @@ const Skills = ({ skillsValueHandle }) => {
     const [hobbies, setHobbies] = useState([]);
     const [subjects, setSubjects] = useState([]);
 
+    // fetch api calls for skills sections
     useEffect(() => {
         const professionalUrl = "https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/GetProfessionalSkillsResponse.json";
         const hobbiesUrl = "https://newpublicbucket.s3.us-east-2.amazonaws.com/reactLiveAssignment/JsonFiles/GetHobbiesResponse.json";
@@ -105,25 +106,25 @@ const Skills = ({ skillsValueHandle }) => {
         <div>
             <div>
                 <p>I am incredible at these skills/professionally great at</p>
-                {professionalSkills && <ChipSelect label={"Professional Skills"} value={selectedskills} handleChange={handleChangeSkills} menuItemData={professionalSkills} handleDeleteChip={handleDeleteProfessionalSkills}/>}
+                {professionalSkills && <ChipSelect label={"Professional Skills"} value={selectedskills} handleChange={handleChangeSkills} menuItemData={professionalSkills} handleDeleteChip={handleDeleteProfessionalSkills} />}
             </div>
             <div>
                 <p>Hobbies i am passionate about</p>
-                {hobbies && <ChipSelect label={"Hobbies"} value={selectedHobbies} handleChange={handleChangeHobbies} menuItemData={hobbies} handleDeleteChip={handleDeleteHobbies}/>}
+                {hobbies && <ChipSelect label={"Hobbies"} value={selectedHobbies} handleChange={handleChangeHobbies} menuItemData={hobbies} handleDeleteChip={handleDeleteHobbies} />}
             </div>
             <div>
                 <p>My favourite subjects are</p>
-                {subjects && <ChipSelect label={"Subjects"} value={selectedSubjects} handleChange={handleChangeSubjects} menuItemData={subjects} handleDeleteChip={handleDeleteSubjects}/>}
+                {subjects && <ChipSelect label={"Subjects"} value={selectedSubjects} handleChange={handleChangeSubjects} menuItemData={subjects} handleDeleteChip={handleDeleteSubjects} />}
             </div>
             {
                 (selectedskills && selectedskills.length > 0) ||
-                (selectedHobbies && selectedHobbies.length > 0) ||
-                (selectedSubjects && selectedSubjects.length > 0) ?
-                <div className="skills-save-button-parent">
-                    <Button className="skills-save-button" variant="contained" color="error" onClick={() => {skillsValueHandle(selectedskills, selectedHobbies, selectedSubjects)}}>Save</Button>
-                </div>
-                :
-                <></>
+                    (selectedHobbies && selectedHobbies.length > 0) ||
+                    (selectedSubjects && selectedSubjects.length > 0) ?
+                    <div className="skills-save-button-parent">
+                        <Button className="skills-save-button" variant="contained" color="error" onClick={() => { skillsValueHandle(selectedskills, selectedHobbies, selectedSubjects) }}>Save</Button>
+                    </div>
+                    :
+                    <></>
             }
         </div>
     )

@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -76,7 +76,7 @@ code {
 }
 
 .skills-p {
-  margin: 0
+  margin: 0;
 }
 
 .spacing-skills {
@@ -196,7 +196,7 @@ code {
 .popup-ethical-inner-cancel-icon {
   margin-top: 10px;
   cursor: pointer;
-  width: 6%
+  width: 6%;
 }
 
 .flexing-list-ethical-parent {
@@ -247,7 +247,7 @@ code {
   text-align: center;
 }
 
-.delete-icon-middle-p{
+.delete-icon-middle-p {
   text-align: center;
 }
 
