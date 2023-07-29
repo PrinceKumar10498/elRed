@@ -12,13 +12,13 @@ import App from './App';
 
 const router = createBrowserRouter([
   {
-    path: "/testUrl",
-    element: <Home />,
-  },
-  {
     path: "/",
     element: <App />,
   },
+  {
+    path: "/testUrl",
+    element: <Home />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
