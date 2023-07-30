@@ -154,7 +154,7 @@ const EditBio = ({ valueDataHandler }) => {
                                 <CardContent>
                                     <div className="upload-info-flexing">
                                         <p className="resume-name">{resume.name}</p>
-                                        <span className="deleted-icon" onClick={() => handleClickOpen()}><DeleteIcon /></span>
+                                        <span className="deleted-icon" onClick={() => handleClickOpen()}><DeleteIcon color="error"/></span>
                                     </div>
                                     {/* <img src={resumePreview} alt="resume-preview" title="resume-prev"/> */}
                                 </CardContent>
