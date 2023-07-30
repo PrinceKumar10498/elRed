@@ -24,8 +24,8 @@ const EditBio = ({ valueDataHandler }) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [isFileUploaded, setIsFileUploaded] = useState(false);
     const [exceedinglimit, setExceedingLimit] = useState(false);
-    // const [resumePreview, setResumePreview] = useState(false);
     const [open, setOpen] = React.useState(false);
+    // const [resumePreview, setResumePreview] = useState(false);
 
     // deleted resume confirm modal transition
     const Transition = React.forwardRef(function Transition(props, ref) {

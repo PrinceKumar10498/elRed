@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import CardContent from '@mui/material/CardContent';
 import EditIcon from '@mui/icons-material/Edit';
 import CancelIcon from '@mui/icons-material/Cancel';
+import PdfViewer from './common/PdfViewer';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
@@ -40,8 +41,8 @@ const style2 = {
     p: 4,
 };
 
-
 const MyBio = () => {
+
     const [aboutMeRender, set_AboutMeRender] = useState(null);
     const [bloodGroupRender, set_BloodGroupRender] = useState(null);
     const [editBioScreen, setEditBioScreen] = useState(false);
@@ -55,6 +56,7 @@ const MyBio = () => {
     const [openEthical, setOpenEthical] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [openModal, setOpenModal] = React.useState(false);
+    const [pdfUrl, setPdfUrl] = useState(null);
 
     // fetching data from ethical coc and virtuality meet
     useEffect(() => {
@@ -74,7 +76,12 @@ const MyBio = () => {
         })
     }, [])
 
-    const handleOpenModal = () => setOpenModal(true);
+    const handleOpenModal = () =>{
+        if(myResume) {
+            setOpenModal(true);
+        }
+    }
+
     const handleCloseModal = () => setOpenModal(false);
 
     const handleOpen = (validator) => {
@@ -85,6 +92,7 @@ const MyBio = () => {
         }
         setOpen(true);
     }
+    
     const handleClose = () => setOpen(false);
 
     const EsitScreenTEst = () => {
@@ -97,15 +105,11 @@ const MyBio = () => {
 
     // getting data from its child to below method
     const valueDataHandler = (aboutMe, bloodGroup, isFileUploaded, resume) => {
+        let pdfUrlCurrent = URL.createObjectURL(resume);
         set_AboutMeRender(aboutMe);
         set_BloodGroupRender(bloodGroup);
         setMyResume(resume);
-        // let reader = new FileReader();
-        // reader.readAsDataURL(resume);
-        // reader.onloadend = (e) =>{
-        //     setMyResume(e.target.result);
-        // }
-        // setMyResume(isFileUploaded);
+        setPdfUrl(pdfUrlCurrent);
         setEditBioScreen(false);
     }
 
@@ -265,7 +269,7 @@ const MyBio = () => {
                     </ul>
                 </Box>
             </Modal>
-            {/* modal for resume preview */}
+            {/* modal for uploaded resume preview */}
             {
                 <Modal
                     open={openModal}
@@ -274,8 +278,11 @@ const MyBio = () => {
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style2}>
-                        {/* {myResume && <p>Show preview of Resume PDF here !!!! </p>} */}
-                        <p>Show preview of Resume PDF here !!!! </p>
+                        <div className="PDF-viewer">
+                            <PdfViewer
+                                document={pdfUrl}
+                            />
+                        </div>
                     </Box>
                 </Modal>
             }
