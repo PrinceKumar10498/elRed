@@ -16,6 +16,7 @@ import Slide from '@mui/material/Slide';
 const EditBio = ({ valueDataHandler }) => {
 
     const [aboutMe, set_AboutMe] = useState(null);
+    const [aboutMeTextLimit, set_AboutMeTextLimit] = useState(false);
     const [aboutMeError, set_AboutMeError] = useState(false);
     const [bloodGroup, set_BloodGroup] = useState(null);
     const [bloodGroupError, set_BloodGroupError] = useState(false);
@@ -49,6 +50,11 @@ const EditBio = ({ valueDataHandler }) => {
 
     const onChangeTextAreaAbout = (event) => {
         if (event.target.value) {
+            if(event.target.value.length > 500) {
+                set_AboutMeTextLimit(true);
+            } else {
+                set_AboutMeTextLimit(false);
+            }
             set_AboutMe(event.target.value)
             setCharacterCount(event.target.value.length);
             set_AboutMeError(false);
@@ -136,6 +142,7 @@ const EditBio = ({ valueDataHandler }) => {
             <h4>Write something about yourself?</h4>
             <textarea className="text-are-about-add" rows="5" placeholder="Write something here..." value={aboutMe} onChange={(event) => { onChangeTextAreaAbout(event) }}></textarea>
             <p className="textLimit">{characterCount}/500</p>
+            {aboutMeTextLimit && <span style={{ color: "red"}}>Exceeding the character limit</span>}
             {aboutMeError && <span style={{ color: "red" }}>About Me mendatory</span>}
             {/* resume upload button */}
             <div className="resume-iupload">
